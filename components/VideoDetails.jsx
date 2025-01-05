@@ -1,6 +1,12 @@
+import { getDictionary } from '@/app/[lang]/dictionaries';
+import { getRandomVideos, getVideoById } from '@/app/[lang]/videosData';
 import React from 'react';
 
-export default function VideoDetails({ video, randomVideos }) {
+export default async function VideoDetails(params) {
+  const { id, lang } = await params;
+  const video        = await getVideoById(id);
+  const randomVideos = await getRandomVideos();
+  const dictionary   = await getDictionary(lang);
   return (
     <main className="flex flex-col lg:flex-row gap-6">
       {/* Main content area */}
@@ -72,14 +78,14 @@ export default function VideoDetails({ video, randomVideos }) {
           </div>
           {/* Subscribe button */}
           <button className="bg-color-purple hover:bg-opacity-80 text-white px-4 py-1 rounded-full text-sm ml-auto">
-            Subscribe
+            {dictionary.subscribe}
           </button>
         </div>
       </div>
       
       {/* Sidebar with random videos */}
       <div className="lg:w-1/4">
-        <h2 className="text-xl font-semibold mb-4">You may like</h2>
+        <h2 className="text-xl font-semibold mb-4">{dictionary.you_may_like}</h2>
         <div className="space-y-4">
           {/* List of random videos */}
           {randomVideos.map((video, index) => (

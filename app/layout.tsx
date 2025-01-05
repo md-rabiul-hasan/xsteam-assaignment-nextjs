@@ -30,10 +30,10 @@ export default function RootLayout({
         className="bg-color-bg text-white font-exo"
       >
         <div className="container mx-auto px-4 py-4">
-          <Navbar />
+          <Navbar/>
           {children}
         </div>
-        
+        <div id="modal-root-content"/>        
       </body>
     </html>
   );

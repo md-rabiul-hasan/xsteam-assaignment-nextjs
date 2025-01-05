@@ -7,7 +7,7 @@ export default function VideoCard({ video }) {
   return (
     // Main container with rounded corners and background styling
     <div className="rounded-lg overflow-hidden bg-color-gray">
-      <Link href={`/videos/${video.videoId}`}>
+      <Link href={`videos/${video.videoId}`}>
         {/* Thumbnail image of the video */}
         <img
           src={video.thumbnail}
